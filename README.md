@@ -27,7 +27,7 @@ Just add this plugin to `tsconfig.json`:
 }
 ```
 
-If you use VSCode, you need to switch the typescript version to local one by adding this setting in `.vscode/settings.json`:
+If you use VSCode, you may need to switch the typescript version to local one by adding this setting in `.vscode/settings.json`:
 
 ```json
 {
