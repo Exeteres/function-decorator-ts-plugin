@@ -12,7 +12,7 @@ yarn add function-decorator-ts-plugin -D
 
 ## Usage
 
-It is assumed that you will use `ts-patch` instead of `ttypescript`.
+It is assumed that you will use [`ts-patch`](https://github.com/nonara/ts-patch) instead of `ttypescript`.
 
 Just add this plugin to `tsconfig.json`:
 
