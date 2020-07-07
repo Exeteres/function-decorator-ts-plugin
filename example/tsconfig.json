@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "es2018",
+        "module": "commonjs",
+        "outDir": "dist",
+        "esModuleInterop": true,
+        "plugins": [
+            {
+                "name": "function-decorator-ts-plugin",
+                "transform": "function-decorator-ts-plugin/transformer"
+            }
+        ]
+    },
+    "include": ["src/**/*.ts"]
+}

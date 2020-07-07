@@ -1,0 +1,7 @@
+{
+    "prettier.arrowParens": "avoid",
+    "prettier.trailingComma": "none",
+    "prettier.printWidth": 100,
+    "prettier.tabWidth": 4,
+    "typescript.tsdk": "node_modules\\typescript\\lib"
+}

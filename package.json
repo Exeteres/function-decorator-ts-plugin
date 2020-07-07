@@ -1,0 +1,21 @@
+{
+    "name": "function-decorator-ts-plugin",
+    "version": "0.1.0",
+    "main": "plugin/index.js",
+    "license": "MIT",
+    "files": [
+        "plugin",
+        "transformer"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "run-example": "cd example && tsc && node dist/index.js",
+        "postinstall": "ts-patch install -s"
+    },
+    "devDependencies": {
+        "@types/node": "^14.0.14",
+        "ts-patch": "^1.2.5",
+        "typescript": "^3.9.6",
+        "ts-node": "^8.10.2"
+    }
+}
