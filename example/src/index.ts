@@ -1,3 +1,5 @@
+import { test3 } from "./test";
+
 function test1(options: { a: number }) {
     return (target: Function) => {
         console.log(`Called test1 decorator with option a = ${options.a}`);
@@ -12,4 +14,5 @@ function test2(target: Function) {
 
 @test1({ a: 123 })
 @test2
+@test3
 export function targetFunction1() {}

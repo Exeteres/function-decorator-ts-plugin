@@ -21,7 +21,8 @@ Just add this plugin to `tsconfig.json`:
     "compilerOptions": {
         "plugins": [{
             "name": "function-decorator-ts-plugin",
-            "transform": "function-decorator-ts-plugin/transformer"
+            "transform": "function-decorator-ts-plugin/transformer",
+            "transformProgram": true
         }]
     }
 }
