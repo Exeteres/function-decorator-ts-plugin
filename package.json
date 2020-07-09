@@ -1,7 +1,7 @@
 {
     "name": "function-decorator-ts-plugin",
     "description": "A simple tsserver and ts-patch plugin that enables function decorators",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "author": "Exeteres",
     "main": "plugin/index.js",
     "license": "MIT",

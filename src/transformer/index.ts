@@ -16,7 +16,7 @@ function hasFlag(node: ts.Declaration, flag: ts.ModifierFlags) {
 
 const transformer = (ctx: ts.TransformationContext) => {
     return (sourceFile: ts.SourceFile) => {
-        if (sourceFile.fileName.includes("node_modules")) {
+        if (sourceFile.isDeclarationFile) {
             return sourceFile;
         }
         function visitor(node: ts.Node) {
@@ -69,17 +69,20 @@ const transformer = (ctx: ts.TransformationContext) => {
     };
 };
 
-export default function (program: ts.Program, host: ts.CompilerHost) {
+export default function (program: ts.Program, host: ts.CompilerHost | undefined) {
     const sourceFiles = program.getSourceFiles() as ts.SourceFile[];
     const result = ts.transform(sourceFiles, [transformer]).transformed;
+    const options = program.getCompilerOptions();
+    if (!host) {
+        host = ts.createCompilerHost(options);
+    }
     host.getSourceFile = fileName => {
         const file = result.find(x => x.fileName === fileName);
-        return ts.updateSourceFileNode(file, [...file.statements]);
+        const updated = ts.updateSourceFileNode(file, [...file.statements]);
+        if (!updated["ambientModuleNames"]) {
+            updated["ambientModuleNames"] = updated["original"]["ambientModuleNames"] ?? [];
+        }
+        return updated;
     };
-    return ts.createProgram(
-        program.getRootFileNames(),
-        program.getCompilerOptions(),
-        host,
-        program
-    );
+    return ts.createProgram(program.getRootFileNames(), options, host, program);
 }
