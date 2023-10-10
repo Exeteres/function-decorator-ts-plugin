@@ -78,6 +78,7 @@ export default function (program: ts.Program, host: ts.CompilerHost | undefined)
     }
     host.getSourceFile = fileName => {
         const file = result.find(x => x.fileName === fileName);
+        if(!file) return;
         const updated = ts.updateSourceFileNode(file, [...file.statements]);
         if (!updated["ambientModuleNames"]) {
             updated["ambientModuleNames"] = updated["original"]["ambientModuleNames"] ?? [];
